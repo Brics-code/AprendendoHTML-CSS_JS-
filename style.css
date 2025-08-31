@@ -1,0 +1,201 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* VARIÁVEIS */
+:root {
+  --text-color: white; /* texto no modo escuro */
+  --bg-gradient: linear-gradient(
+    135deg,
+    #020617,
+    #4c1d95
+  ); /* fundo gradiente escuro */
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.15);
+  --highlight-color: rgba(255, 255, 255, 0.1);
+  --switch-bg-url: url(assets/assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black; /* texto no modo claro */
+  --bg-gradient: linear-gradient(
+    135deg,
+    #f5f5f5,
+    #a0c4ff
+  ); /* fundo gradiente claro */
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(assets/assets/sun.svg);
+}
+
+/* BODY */
+body {
+  background: var(--bg-gradient);
+  color: var(--text-color);
+  font-family: "Inter", sans-serif;
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background 0.6s ease, color 0.6s ease;
+}
+
+/* GLOW RADIAL ANIMADO */
+@keyframes glowMove {
+  0%,
+  100% {
+    background-position: 50% 100px;
+  }
+  50% {
+    background-position: 55% 120px;
+  }
+}
+
+.radial-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: radial-gradient(
+    circle 500px at 50% 100px,
+    rgba(236, 72, 153, 0.4),
+    transparent
+  );
+  background-repeat: no-repeat;
+  background-size: 500px 500px;
+  animation: glowMove 10s infinite ease-in-out;
+  transition: background 0.6s ease;
+}
+
+body.light .radial-bg {
+  background-image: radial-gradient(
+    circle 500px at 50% 100px,
+    rgba(72, 149, 236, 0.3),
+    transparent
+  );
+}
+
+/* CONTEÚDO ACIMA DO GLOW */
+#container {
+  position: relative;
+  z-index: 1; /* mantém acima do glow */
+  width: 360px;
+  margin: 56px auto 0;
+  padding: 0 24px;
+  transition: all 0.6s ease;
+}
+
+/* PROFILE */
+#profile {
+  text-align: center;
+}
+#profile img {
+  width: 112px;
+}
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* SWITCH */
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transform: translateY(-50%);
+  transition: all 0.6s ease;
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  transition: all 0.6s ease;
+}
+
+/* LINKS */
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text-color);
+  transition: all 0.6s ease;
+}
+
+ul li a:hover {
+  background-color: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/* SOCIAL LINKS */
+#social-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  padding: 24px 0;
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 50%;
+  color: var(--text-color);
+  transition: all 0.6s ease;
+}
+
+#social-links a:hover {
+  background-color: var(--highlight-color);
+}
+
+/* FOOTER */
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-color);
+}
