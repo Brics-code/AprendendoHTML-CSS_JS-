@@ -17,7 +17,7 @@ O projeto possui **tema claro e escuro**, uma foto de perfil personalizada, bot�
 
 ## 📸 Prévia do Projeto
 
-<img src="./assets/assets/brunosaraiva.jpg" alt="Foto de perfil do Bruno Saraiva" width="200" style="border-radius: 50%;" />
+<img src="./assets/assets/preview.png" alt="Foto de perfil do Bruno Saraiva" width="200" style="border-radius: 50%;" />
 
 ---
 
